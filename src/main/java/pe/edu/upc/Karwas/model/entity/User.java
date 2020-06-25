@@ -25,12 +25,12 @@ import lombok.Setter;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private long id;
 	
 	@Column(name = "user_name", length = 30, nullable = false)
     private String username;
 	
-	@Column(name = "password", length = 30, nullable = false)
+	@Column(name = "password", length = 60, nullable = false)
     private String password;
 	
 	private boolean enable;
@@ -50,7 +50,7 @@ public class User {
 	
 	public User() {
 		this.enable = true;
-		roles = new ArrayList<>();
+		this.roles = new ArrayList<>();
 		car = new ArrayList<>();
 		userBranchoffices = new ArrayList<>();
 	}
@@ -59,7 +59,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.enable = true;
-		roles = new ArrayList<>();
+		this.roles = new ArrayList<>();
 		car = new ArrayList<>();
 		userBranchoffices = new ArrayList<>();
 	}
@@ -68,5 +68,6 @@ public class User {
 		Role role = new Role();
 		role.setNameRole(rol);
 		role.setUser(this);
+		this.roles.add(role);
 	}
 }

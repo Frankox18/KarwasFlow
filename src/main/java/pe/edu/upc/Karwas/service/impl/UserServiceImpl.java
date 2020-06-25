@@ -14,7 +14,43 @@ import pe.edu.upc.Karwas.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
+	@Override
+	public User create(User entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> readAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<User> findById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User update(User entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteByAll() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*@Autowired
 	private UserRepository userRepository;
 	
 	@Override
@@ -52,6 +88,6 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void deleteByAll() throws Exception {
 		userRepository.deleteAll();
-	}
+	}*/
 
 }

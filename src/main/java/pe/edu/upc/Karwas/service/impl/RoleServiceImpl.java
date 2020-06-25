@@ -13,8 +13,50 @@ import pe.edu.upc.Karwas.service.RoleService;
 
 @Service
 public class RoleServiceImpl implements RoleService {
+
+	@Override
+	public Role create(Role entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Role> readAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<Role> findById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Role update(Role entity) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteByAll() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Role> findByNameRole(String nameRole) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
-	@Autowired
+	/*@Autowired
 	private RoleRepository roleRepository;
 
 	@Override
@@ -57,7 +99,7 @@ public class RoleServiceImpl implements RoleService {
 	@Transactional(readOnly = true)
 	public List<Role> findByNameRole(String nameRole) throws Exception {
 		return roleRepository.findByNameRole(nameRole);
-	}
+	}*/
     
 	
 }
