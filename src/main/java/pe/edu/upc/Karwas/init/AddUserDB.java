@@ -1,4 +1,4 @@
-package pe.edu.upc.Karwas.adduserdb;
+package pe.edu.upc.Karwas.init;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -52,8 +52,6 @@ public class AddUserDB implements CommandLineRunner {
 		userRepository.save(driver);	
 		userRepository.save(manager);
 		userRepository.save(employee);*/
-		
-		
 	}
 
 }
