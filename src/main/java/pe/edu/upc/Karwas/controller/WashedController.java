@@ -16,8 +16,10 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.Karwas.model.entity.Washed;
 import pe.edu.upc.Karwas.model.entity.Announcement;
+import pe.edu.upc.Karwas.model.entity.TypeWashed;
 import pe.edu.upc.Karwas.service.WashedService;
 import pe.edu.upc.Karwas.service.AnnouncementService;
+import pe.edu.upc.Karwas.service.TypeWashedService;
 
 @Controller
 @RequestMapping("karwas/washed")
@@ -29,6 +31,9 @@ public class WashedController {
 	
 	@Autowired
 	private AnnouncementService announcementService;
+	
+	@Autowired
+	private TypeWashedService typewashedService;
 	
 	@GetMapping("/start")
 	public String listAll(Model model) {
@@ -52,7 +57,14 @@ public class WashedController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		try {
+			List<TypeWashed> typewasheds = typewashedService.readAll();
+			model.addAttribute("typewasheds", typewasheds);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return "/washed/nuevo";
 	}
 	
@@ -74,13 +86,26 @@ public class WashedController {
 			if(optional.isPresent()) {
 				model.addAttribute("washed", optional.get());	
 				List<Announcement> announcements = announcementService.readAll();
-				model.addAttribute("announcements", announcements);
+				model.addAttribute("announcements", announcements);					
 			} else {
 				return "redirect:/karwas/washed/start";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		try {
+			Optional<Washed> optional = washedService.findById(id);
+			if(optional.isPresent()) {
+				model.addAttribute("washed", optional.get());	
+				List<TypeWashed> typewasheds = typewashedService.readAll();
+				model.addAttribute("typewasheds", typewasheds);				
+			} else {
+				return "redirect:/karwas/washed/start";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "/washed/edit";
 	}
 	

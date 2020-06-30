@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center"> 
+				<div class="card-header">TypeWashed</div>
+				<div class="card-body">
+					<table class="table table-borderless table-dark">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Type Washed</th>
+								<th scope="col"></th>
+						      
+							</tr>
+						</thead>
+						<tbody th:each="typewashed: ${typewasheds}">
+							<tr>
+								<th scope="row" th:text="${typewashed.id}">1</th>
+								<td th:text = "${typewashed.serviceName}">.</td>
+
+							    <td>
+							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
+							      <a th:href="@{'/karwas/typewashed/edit/' + ${typewashed.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+							      <a th:href="@{'/karwas/typewashed/del/' + ${typewashed.id}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+							    </td>
+							</tr> 
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer text-center">
+				<a th:href="@{/karwas/typewashed/new}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> New Type Washed</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

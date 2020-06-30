@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center"> 
+				<div class="card-header">Washes</div>
+				<div class="card-body">
+					<table class="table table-borderless table-dark">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Type Washed</th>
+								<th scope="col">Announcement</th>
+								<th scope="col">Description</th>
+								<th scope="col">Wash Time</th>
+								<th scope="col">Total Amount</th>
+								<th scope="col"></th>
+						      
+							</tr>
+						</thead>
+						<tbody th:each="washed: ${washes}">
+							<tr>
+								<th scope="row" th:text="${washed.id}">1</th>
+								<td th:text = "${washed.typewashed.serviceName}">.</td>
+								<td th:text = "${washed.announcement.title}">.</td>
+								<td th:text = "${washed.description}">.</td>
+								<td th:text = "${washed.wash_Time}">.</td>
+								<td th:text = "${washed.totalAmount }">.</td>
+
+							    <td>
+							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
+							      <a th:href="@{'/karwas/washed/edit/' + ${washed.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+							      <a th:href="@{'/karwas/washed/del/' + ${washed.id}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+							    </td>
+							</tr> 
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer text-center">
+				<a th:href="@{/karwas/washed/new}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> New Washed</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

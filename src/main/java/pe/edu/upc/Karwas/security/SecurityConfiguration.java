@@ -30,33 +30,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
-		super.configure(http); //probando.
-		/*http
+		//super.configure(http); //probando.
+		http
 			.authorizeRequests()
-				.antMatchers("/onewebs/index.html").permitAll()
-				.antMatchers("/onewebs/announcement").hasRole("MANAGER")
-				.antMatchers("/onewebs/branchoffice").hasAnyRole("DRIVER", "MANAGER")
-				.antMatchers("/onewebs/person/login").hasAuthority("ACCESS_ADDPERSON")
-				.antMatchers("/onewebs/payment").authenticated()
-			.and()
-			.formLogin()
-				.loginProcessingUrl("/signin")
-				.loginPage("/onewebs/login")
-				.usernameParameter("inputUsername")
-				.passwordParameter("inputPassword")
-			.and()
-			.logout()
-				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/karwas")
-			.and()
-			.rememberMe()
-				.tokenValiditySeconds(2592000)
-				.key("Cl4v3.")
-				.rememberMeParameter("checkRememberMe")
-				.userDetailsService(uDetailsService)
-			.and()
-				.exceptionHandling()
-				.accessDeniedHandler(loggingAccessDeniedHandler);*/
+				.antMatchers("/onewebs/index.html").permitAll();
+				
 
 	}
 	

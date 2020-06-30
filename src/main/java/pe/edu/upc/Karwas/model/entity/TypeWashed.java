@@ -26,7 +26,7 @@ public class TypeWashed {
 	@Column(name = "service_name", length = 30, nullable = false)
     private String serviceName;
 	
-	@OneToMany(mappedBy = "typeWashed")
+	@OneToMany(mappedBy = "typewashed")
 	private List<Washed> washeds;
 	
 	public TypeWashed() {

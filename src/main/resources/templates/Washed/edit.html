@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center">
+				<div class="card-header">Edit Washed</div>
+				<div class="card-body text-left">
+
+					<form th:action="@{/karwas/washed/save}"
+						th:object="${washed}" method="post">
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="typewashed">Type Washed</label> <select
+									th:field="*{typewashed}" class="form-control">
+									<option value="">Seleccione tipo de lavado</option>
+									<option th:each="typewashed : ${typewasheds}"
+										th:value="${typewashed.id}"
+										th:text="${typewashed.serviceName}">
+									</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="announcement">Type Announcement</label> <select
+									th:field="*{announcement}" class="form-control">
+									<option value="">Seleccione tipo de anuncio</option>
+									<option th:each="announcement : ${announcements}"
+										th:value="${announcement.id}"
+										th:text="${announcement.title}">
+									</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="description">Description</label>
+								<textarea class="form-control" th:field="*{description}"
+									placeholder="Ingrese una descripcion"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="wash_Time">Wash Time</label>
+								<textarea class="form-control" th:field="*{wash_Time}"
+									placeholder="Ingrese la hora de lavado"></textarea>
+							</div>
+						</div>
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="totalAmount">Total Amount</label>
+								<textarea class="form-control" th:field="*{totalAmount}"
+									placeholder="Ingrese el monto total"></textarea>
+							</div>
+						</div>
+						
+						
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-save"></i> Grabar
+						</button>
+						<a th:href="@{/karwas/washed/start}" class="btn btn-danger">
+							Cancelar</a>
+					</form>
+				</div>
+				<div class="card-footer text-center"></div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

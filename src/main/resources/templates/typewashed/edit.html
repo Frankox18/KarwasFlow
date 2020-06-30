@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center">
+				<div class="card-header">Edit Type Washed</div>
+				<div class="card-body text-left">
+
+					<form th:action="@{/karwas/typewashed/save}"
+						th:object="${typewashed}" method="post">
+						
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="typewashed">TypeWashed</label> <select
+									th:field="*{serviceName}" class="form-control">
+									<option value="">Seleccione su TypeWashed</option>
+									<option value="Basic">Basic</option>
+									<option value="Standard">Standard</option>
+									<option value="Premium">Premium</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						<button type="submit" class="btn btn-success">
+							<i class="fas fa-save"></i> Grabar
+						</button>
+						<a th:href="@{/karwas/typewashed/start}" class="btn btn-danger">
+							Cancelar</a>
+					</form>
+				</div>
+				<div class="card-footer text-center"></div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

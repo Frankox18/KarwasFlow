@@ -30,7 +30,7 @@ public class Washed {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_washed_id")
-	private TypeWashed typeWashed;
+	private TypeWashed typewashed;
 
 	@Column(name="description", length = 40, nullable = false)
 	private String description;
