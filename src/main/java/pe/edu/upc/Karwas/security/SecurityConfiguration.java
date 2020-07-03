@@ -18,39 +18,59 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UDetailsService uDetailsService;
-	
+
 	@Autowired
 	private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider() );
+		auth.authenticationProvider(authenticationProvider());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
-		//super.configure(http); //probando.
+		// super.configure(http); 
 		http
 			.authorizeRequests()
-				.antMatchers("/onewebs/index.html").permitAll();
-				
+				.antMatchers("/karwas/index.html").permitAll()
+				.antMatchers("/karwas/announcement").hasRole("MANAGER")
+				.antMatchers("/karwas/role/start").hasAuthority("ACCESS_ADDPERSON")
+				.antMatchers("/karwas/payment").authenticated()
+			.and()
+			.formLogin()
+				.loginProcessingUrl("/signin")
+				.loginPage("/karwas/login")
+				.usernameParameter("inputUsername")
+				.passwordParameter("inputPassword")
+			.and()
+				.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/karwas")
+			.and()
+			.rememberMe()
+				.tokenValiditySeconds(2592000)
+				.key("Cl4v3.")
+				.rememberMeParameter("checkRememberMe")
+				.userDetailsService(uDetailsService)
+			.and()
+				.exceptionHandling()
+				.accessDeniedHandler(loggingAccessDeniedHandler);
 
 	}
-	
+
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
-	// Aqui se crea el vinculo entre el Spring security y: el PasswordEncoder y UDetailsService
+
+	// Aqui se crea el vinculo entre el Spring security y: el PasswordEncoder y
+	// UDetailsService
 	DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-		
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
 		daoAuthenticationProvider.setUserDetailsService(this.uDetailsService);
 		return daoAuthenticationProvider;
 	}
-	
-	
+
 }

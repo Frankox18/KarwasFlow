@@ -14,53 +14,10 @@ import pe.edu.upc.Karwas.service.RoleService;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-	@Override
-	public Role create(Role entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Role> readAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<Role> findById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Role update(Role entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteByAll() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Role> findByNameRole(String nameRole) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-    
-	/*@Autowired
+	@Autowired
 	private RoleRepository roleRepository;
-
+	
 	@Override
-	@Transactional
 	public Role create(Role entity) throws Exception {
 		return roleRepository.save(entity);
 	}
@@ -73,33 +30,32 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Role> findById(Integer id) throws Exception {
+	public Optional<Role> findById(Long id) throws Exception {
 		return roleRepository.findById(id);
 	}
 
+
 	@Override
-	@Transactional
 	public Role update(Role entity) throws Exception {
 		return roleRepository.save(entity);
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Integer id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		roleRepository.deleteById(id);
 	}
 
 	@Override
-	@Transactional
 	public void deleteByAll() throws Exception {
 		roleRepository.deleteAll();
+		
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public List<Role> findByNameRole(String nameRole) throws Exception {
-		return roleRepository.findByNameRole(nameRole);
-	}*/
-    
+		// TODO Auto-generated method stub
+		return null;
+	}
+   
 	
 }

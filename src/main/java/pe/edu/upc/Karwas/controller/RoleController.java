@@ -66,7 +66,7 @@ public class RoleController {
  	}
 	
 	@GetMapping("/edit/{id}")
-	public String editRole(@PathVariable("id") Integer id, Model model) {
+	public String editRole(@PathVariable("id") Long id, Model model) {
 		try {
 			Optional<Role> optional = roleService.findById(id);
 			if (optional.isPresent()) {
@@ -83,7 +83,7 @@ public class RoleController {
 	}
 	
 	@GetMapping("/del/{id}")
-	public String delRole(@PathVariable("id") Integer id,  Model model) {
+	public String delRole(@PathVariable("id") Long id,  Model model) {
 		try {
 			Optional<Role> optional = roleService.findById(id);
 			if (optional.isPresent()) {
