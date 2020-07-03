@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center">
+				<div class="card-header">New Company</div>
+				<div class="card-body text-left">
+
+					<form th:action="@{/karwas/userbranchoffice/savecompany}"
+						th:object="${user_branch}" method="post">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="ruc">Ruc</label> <input type="text"
+									class="form-control" th:field="*{branchOffice.company.ruc}"
+									placeholder="Ingrese el ruc de la empresa" id="choose2"
+									name="i_like" required minlength="11" maxlength="11"
+									pattern="[0-9]{11}"
+									title="Ingresar 11 digitos n&uacute;mericos de ruc">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="Bussiness name">Business name</label> <input type="text"
+									class="form-control" th:field="*{branchOffice.company.name}"
+									placeholder="Ingrese un nombre" id="choose0" name="i_like"
+									minlength="5" maxlength="20S" required pattern="[A-Za-z]+"
+									title="Ingresar nombre de la empresa">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="address">address</label> <input type="text"
+									class="form-control" th:field="*{branchOffice.address}"
+									placeholder="Ingrese una direccion">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="district">District</label> <input type="text"
+									class="form-control" th:field="*{branchOffice.district}"
+									placeholder="Ingrese el distrito">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="workShift">Work Shift</label> <select
+									th:field="*{workShift}" class="form-control"
+									th:errorclass="'form-control alert-danger'">
+									<option value="">Select Work Shift</option>
+									<option value="M-S">Monday to Sunday</option>
+									<option value="M-S-T">Monday to Saturday</option>
+									<option value="M-W-F">Monday - Wendsday - Friday</option>
+								</select> <small class="form-text alert-danger"
+									th:if="${#fields.hasErrors('workShift')}"
+									th:errors="*{workShift}"></small>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="start hour">Start Hour</label> <input type="number"
+									class="form-control" th:field="*{startHour}"
+									placeholder="Ingrese la hora de entrada">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="end hour">End Hour</label> <input type="number"
+									class="form-control" th:field="*{endHour}"
+									placeholder="Ingrese la hora de salida">
+							</div>
+
+						</div>
+						<br>
+						<div class="text-center">
+							<button type="submit" class="btn btn-dark">
+								<i class="fas fa-save"></i> Grabar
+							</button>
+							<a th:href="@{/karwas}" class="btn btn-danger"> Cancelar</a>
+						</div>
+					</form>
+				</div>
+				<div class="card-footer text-center"></div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

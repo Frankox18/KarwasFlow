@@ -17,22 +17,19 @@
 								<label for="name">Name</label> <input type="text"
 									class="form-control" th:field="*{name}"
 									placeholder="Ingrese un nombre"  id="choose0" name="i_like" 
-									minlength="5" maxlength="10" required pattern="[A-Za-z]+"  
+									minlength="5" maxlength="20S" required pattern="[A-Za-z]+"  
 									title="Ingresar nombre de la empresa">
 							</div>
-						</div>
-						<div class="form-row">
 							<div class="form-group col-md-6">
-
 								<label for="ruc">Ruc</label> <input
 									type="text" class="form-control" th:field="*{ruc}"
 									placeholder="Ingrese el ruc de la empresa" id="choose2" name="i_like" 
 									required minlength="11" maxlength="11"  pattern="[0-9]{11}" 
 									title="Ingresar 11 digitos n&uacute;mericos de ruc">
-
 							</div>
-						</div>
 		
+						</div>
+							
 						<button type="submit" class="btn btn-success">
 							<i class="fas fa-save"></i> Grabar
 						</button>

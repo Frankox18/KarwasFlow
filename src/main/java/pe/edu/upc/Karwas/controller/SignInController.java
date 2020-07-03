@@ -42,8 +42,8 @@ public class SignInController {
 		Person person = new Person();
 		user.addRoles("ROLE_DRIVER");
 		user.setEnable(true);
+		user.setPerson(person);
 		model.addAttribute("user", user);
-		model.addAttribute("person", person);
 		return "/user/signin";
 	}
 
@@ -53,19 +53,19 @@ public class SignInController {
 		Person person = new Person();
 		user.addRoles("ROLE_MANAGER");
 		user.setEnable(true);
+		user.setPerson(person);
 		model.addAttribute("user", user);
-		model.addAttribute("person", person);
 		return "/user/signin";
 	}
 
 	@PostMapping("/save")
-	public String saveManager(@ModelAttribute("user") User user, @ModelAttribute("person") Person person, Model model,
+	public String saveManager(@ModelAttribute("user") User user, Model model,
 			SessionStatus status) {
 		try {
 			this.password = user.getPassword();
 			user.setPassword(passwordEncoder.encode(this.password));
 			userService.create(user);
-			personService.create(person);
+			personService.create(user.getPerson());
 			status.setComplete();
 		} catch (Exception e) {
 			e.printStackTrace();
