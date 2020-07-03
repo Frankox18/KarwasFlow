@@ -4,77 +4,67 @@
 </head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
-	<main role="main">
-		<section class="container">
-			<div class="card text-center">
-				<div class="card-header">Edit User</div>
-				<div class="card-body text-left">
+	<section class="container">
+		<div class="card text-center">
+			<div class="card-header">Mis datos</div>
+			<div class="card-body text-left">
 
-					<form th:action="@{/karwas/user/save}"
-						th:object="${user}" method="post">
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="username">Username</label> <input type="text"
-									class="form-control" th:field="*{username}"
-									placeholder="Ingrese su username">
-							</div>
+				<form th:action="@{/karwas/signin/save}" th:object="${user}"
+					method="post">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="username">Usurname</label> <input type="text"
+								class="form-control" th:field="*{username}"
+								placeholder="Ingrese un nombre de usuario">
 						</div>
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="password">Password</label> <input type="text"
-									class="form-control" th:field="*{password}"
-									placeholder="Ingrese una contrase a">
-							</div>
+						<div class="form-group col-md-6">
+							<label for="password">Password</label> <input type="text"
+								class="form-control" th:field="*{password}"
+								placeholder="Ingrese una contraseña">
 						</div>
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="address">Address</label> <input type="text"
-									class="form-control" th:field="*{person.address}"
-									placeholder="Ingrese una direccion">
-							</div>
+						<div class="form-group col-md-6">
+							<label for="name">Name</label> <input type="text"
+								class="form-control" th:field="*{person.name}"
+								placeholder="Ingrese su nombre">
 						</div>
-						<div class="form-row">
-							<div class="form-group col-md-6">
+						<div class="form-group col-md-6">
+							<label for="lastName">Last Name</label> <input type="text"
+								class="form-control" th:field="*{person.lastName}"
+								placeholder="Ingrese su apellido">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="dni">DNI</label> <input type="text"
+								class="form-control" th:field="*{person.dni}"
+								placeholder="Ingrese un dni">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="address">Address</label> <input type="text"
+								class="form-control" th:field="*{person.address}"
+								placeholder="Ingrese una direccion">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="district">District</label> <input type="text"
+								class="form-control" th:field="*{person.district}"
+								placeholder="Ingrese el distrito">
 
-								<label for="district">District</label> <input
-									type="text" class="form-control" th:field="*{person.district}"
-									placeholder="Ingrese el distrito">
-
-							</div>
 						</div>
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="dni">Dni</label> <input type="text"
-									class="form-control" th:field="*{person.dni}"
-									placeholder="Ingrese un dni">
-							</div>
-							<div class="form-group col-md-6">
-								<label for="lastName">Last name</label> <input type="text"
-									class="form-control" th:field="*{person.lastName}"
-									placeholder="Ingrese su apellido">
-							</div>
-							<div class="form-group col-md-6">
-								<label for="name">name</label> <input type="text"
-									class="form-control" th:field="*{person.name}"
-									placeholder="Ingrese su nombre">
-									
-								<label for="numberPhone">Number phone</label><input type="text"
-									class="form-control" th:field="*{person.numberPhone}"
-									placeholder="Ingrese su numero de celular">
-							</div>
+						<div class="form-group col-md-6">
+							<label for="numberPhone">Number phone</label><input type="text"
+								class="form-control" th:field="*{person.numberPhone}"
+								placeholder="Ingrese su numero de celular">
 						</div>
-						<button type="submit" class="btn btn-success">
+					</div>
+					<br>
+					<div class="text-center">
+						<button type="submit" class="btn btn-dark" onclick="return confirm('Seguro de Cambiar?')">
 							<i class="fas fa-save"></i> Grabar
 						</button>
-						<a th:href="@{/karwas/user/start}" class="btn btn-danger">
-							Cancelar</a>
-					</form>
-				</div>
-				<div class="card-footer text-center"></div>
+						<a th:href="@{/karwas/login}" class="btn btn-danger"> Cancelar</a>
+					</div>
+				</form>
 			</div>
-
-		</section>
-	</main>
+		</div>
+	</section>
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

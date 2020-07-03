@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center"> 
+				<div class="card-header">Companys</div>
+				<div class="card-body">
+					<table class="table table-borderless table-dark">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">RUC</th>
+								<th scope="col">District</th>
+								<th scope="col">Address</th>
+								<th scope="col"></th>
+						      
+							</tr>
+						</thead>
+						<tbody th:each="userbranch: ${user_branch}">
+							<tr>
+								<th scope="row" th:text="${userbranch.id}">1</th>
+								<td th:text = "${userbranch.branchoffice.company.name}">.</td>
+								<td th:text = "${userbranch.branchoffice.company.ruc}">.</td>
+							    <td th:text = "${userbranch.branchoffice.district}">.</td>
+								<td th:text = "${userbranch.branchoffice.address}">.</td>
+							    <td>
+							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
+							      <a th:href="@{#}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+							      <a th:href="@{#}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+							    </td>
+							</tr> 
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer text-center">
+				<a th:href="@{/karwas/userbranchoffice/newcompany}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> New Company</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

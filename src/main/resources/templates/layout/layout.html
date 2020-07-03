@@ -31,20 +31,19 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" th:href="@{/karwas}">Home</a>
 					</li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/company/new}">Create Company</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/company/start}">Companys</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/branchoffice/new}">Create Branch Office</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/car/start}">Car</a></li>
-					<li sec:authorize="isAuthenticated()"  class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/payment/new}">Payment</a></li>
-					<li sec:authorize="isAuthenticated()"  class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/typewashed/new}">TypeWashed</a></li>
-					<li sec:authorize="isAuthenticated()"  class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/washed/new}">Washed</a></li>
+					<li sec:authorize="hasRole('ROLE_DRIVER')" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/car/start}">Register Car</a></li>
+					<li sec:authorize="hasRole('ROLE_MANAGER')" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/userbranchoffice/newcompany}">Register
+							Company</a></li>
+					<li sec:authorize="hasRole('ROLE_DRIVER')" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/washed/start}">See Washes</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/payment/new}">Payment</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/typewashed/new}">TypeWashed</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/washed/new}">Washed</a></li>
 				</ul>
 			</div>
 			<span class="navbar-text">
@@ -53,20 +52,19 @@
 						class="btn btn-outline-warning" th:href="@{/karwas/signin/driver}"
 						aria-disabled="true">Registrarse como Conductor</a> <a
 						class="btn btn-outline-info" th:href="@{/karwas/signin/manager}"
-						aria-disabled="true">Registrarse como Administrador</a> <a class="btn btn-success"
-						th:href="@{/karwas/login}" aria-disabled="true">Iniciar Sesión</a>
-					</li>
+						aria-disabled="true">Registrarse como Administrador</a> <a
+						class="btn btn-success" th:href="@{/karwas/login}"
+						aria-disabled="true">Iniciar Sesión</a></li>
 				</ul>
 			</span>
 			<div sec:authorize="isAuthenticated()" class="btn-group dropleft">
 				<button type="button" class="btn btn-danger dropdown-toggle"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user"></i><br>
-					<span sec:authentication="name"> Username</span>
+					<i class="fas fa-user"></i><br> <span
+						sec:authentication="name"> Username</span>
 				</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" th:href="@{#}">Mis datos</a> <a
-						class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+					<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
 					<!-- Dropdown menu links -->
 				</div>
 			</div>
