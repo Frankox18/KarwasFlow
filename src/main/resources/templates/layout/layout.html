@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="utf-8">
 <meta name="viewport"
@@ -7,7 +8,7 @@
 <meta name="description" content="Demo Project Covid-19">
 <meta name="author" content="Programación en Web">
 
-<title>Autolavado KARWAS</title>
+<title>KARWAS</title>
 
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/chosen.min.css}">
@@ -18,8 +19,8 @@
 <body>
 	<header th:fragment="header">
 
-		<nav class="navbar navbar-expand-lg navbar-dark bg-info">
-			<a class="navbar-brand" href="#"><i class="fas fa-user-lock"></i>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#"><i class="fas fa-car"></i>
 				KARWAS</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
@@ -30,17 +31,42 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" th:href="@{/karwas}">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/role/start}">Users</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/company/new}">Create Company</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/company/start}">Companys</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/branchoffice/new}">Create Branch Office</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/karwas/car/start}">Car</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/role/start}">Users</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/company/new}">Create
+							Company</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/company/start}">Companys</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/branchoffice/new}">Create
+							Branch Office</a></li>
+					<li sec:authorize="isAuthenticated()" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/car/start}">Car</a></li>
 				</ul>
+			</div>
+			<span class="navbar-text">
+				<ul class="navbar-nav">
+					<li sec:authorize="isAnonymous()" class="nav-item"><a
+						class="btn btn-outline-warning" th:href="@{/karwas/signin/driver}"
+						aria-disabled="true">Registrarse como Conductor</a> <a
+						class="btn btn-outline-info" th:href="@{/karwas/signin/manager}"
+						aria-disabled="true">Registrarse como Administrador</a> <a class="btn btn-success"
+						th:href="@{/karwas/login}" aria-disabled="true">Iniciar Sesión</a>
+					</li>
+				</ul>
+			</span>
+			<div sec:authorize="isAuthenticated()" class="btn-group dropleft">
+				<button type="button" class="btn btn-danger dropdown-toggle"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-user"></i><br>
+					<span sec:authentication="name"> Username</span>
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{#}">Mis datos</a> <a
+						class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+					<!-- Dropdown menu links -->
+				</div>
 			</div>
 		</nav>
 

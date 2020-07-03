@@ -42,7 +42,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/signin")
 				.loginPage("/karwas/login")
 				.usernameParameter("inputUsername")
-				.passwordParameter("inputPassword");
+				.passwordParameter("inputPassword")
+			.and()
+				.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/karwas")
+			.and()
+			.rememberMe()
+				.tokenValiditySeconds(2592000)
+				.key("Cl4v3.")
+				.rememberMeParameter("checkRememberMe")
+				.userDetailsService(uDetailsService)
+			.and()
+				.exceptionHandling()
+				.accessDeniedHandler(loggingAccessDeniedHandler);
+
 	}
 
 	@Bean

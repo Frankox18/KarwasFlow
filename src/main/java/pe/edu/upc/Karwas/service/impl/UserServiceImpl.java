@@ -14,47 +14,10 @@ import pe.edu.upc.Karwas.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Override
-	public User create(User entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<User> readAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<User> findById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User update(User entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteByAll() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/*@Autowired
+	@Autowired
 	private UserRepository userRepository;
 	
 	@Override
-	@Transactional
 	public User create(User entity) throws Exception {
 		return userRepository.save(entity);
 	}
@@ -67,27 +30,27 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<User> findById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
+	public Optional<User> findById(Long id) throws Exception {
 		return userRepository.findById(id);
 	}
 
 	@Override
-	@Transactional
 	public User update(User entity) throws Exception {
 		return userRepository.save(entity);
 	}
 
 	@Override
-	@Transactional
-	public void deleteById(Integer id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		userRepository.deleteById(id);
 	}
 
 	@Override
-	@Transactional
 	public void deleteByAll() throws Exception {
 		userRepository.deleteAll();
-	}*/
+	}
+
+
+
+
 
 }
