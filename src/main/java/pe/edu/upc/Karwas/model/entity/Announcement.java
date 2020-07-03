@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,9 +34,11 @@ public class Announcement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message = "Por favor, ingrese el titulo del anuncio")
 	@Column(name = "tittle", length = 30, nullable = false)
 	private String title;
 	
+	@NotBlank(message = "Es obligatorio ingresar una descripción")
 	@Column(name = "description", length = 500, nullable = false)
 	private String description;
 	
@@ -42,9 +47,11 @@ public class Announcement {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date announcementDate;
 	
+	@NotEmpty(message = "Por favor, ingrese el tipo(s) de servicio")
 	@OneToMany(mappedBy = "announcement")
 	private List<Washed> service;
 	
+	@NotNull(message = "Ingrese el local")
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "branchOffice_id")
 	private BranchOffice branchOffice;
