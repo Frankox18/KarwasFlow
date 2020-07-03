@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,24 +30,30 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@NotBlank(message = "Ingrese el username")
 	@Column(name = "user_name", length = 30, nullable = false)
     private String username;
 	
+	@NotBlank(message = "Ingrese la contraseña")
 	@Column(name = "password", length = 60, nullable = false)
     private String password;
 	
 	private boolean enable;
 	
+	@NotEmpty(message = "Ingrese el rol")
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Role> roles;
 	
+	@NotNull() 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "person_id")
 	private Person person;
 	
+	@NotEmpty()
 	@OneToMany(mappedBy = "user")
 	private List<Car> car;
 	
+	@NotEmpty()
 	@OneToMany(mappedBy = "user")
 	private List<UserBranchoffice> userBranchoffices;
 	
