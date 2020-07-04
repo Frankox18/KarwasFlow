@@ -14,10 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,8 +36,7 @@ public class Payment {
 	@Column(name = "method", length = 30, nullable = false)
 	private String method;
 
-	@Min(16)
-	@Max(16)
+	@Min(value = 16, message = "El numero de la tarjeta debe contener 16 digitos")
 	@Column(name = "number_card", length = 16, nullable = false)
 	private Long numberCard;
 	
@@ -49,12 +46,10 @@ public class Payment {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateExp;
 	
-	@Min(3)
-	@Max(3)
+	@Min(value = 3, message = "El numero cvv debe ser 3")
 	@Column(name = "cvv", length = 3, nullable = false)
 	private int cvv;
 
-	@NotEmpty(message = "Ingrese el detalle del lavado")
 	@OneToMany(mappedBy = "payment")
 	private List<Registry> servicesDetails;
 
