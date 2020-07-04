@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,21 +27,29 @@ public class UserBranchoffice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
+
+	@NotNull(message = "Ingrese user")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user; 
 	
+	@NotNull(message = "Ingrese el local")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "branch_office_id")
 	private BranchOffice branchOffice;
 	
+	@NotBlank(message = "Ingrese turno de trabajo")
 	@Column(name = "work_shift", length = 40, nullable = false)
 	private String workShift;
 	
+	@Min(0)
+	@Max(24)
 	@Column(name = "start_hour",length = 2,nullable = false)
 	private int startHour;
 	
+	@Min(0)
+	@Max(24)
 	@Column(name = "end_hour", length = 2 ,nullable = false)
 	private int endHour;
 }

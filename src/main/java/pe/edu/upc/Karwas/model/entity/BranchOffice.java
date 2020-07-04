@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,19 +31,24 @@ public class BranchOffice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+	@NotBlank(message = "Ingrese el distrito del local")
 	@Column(name = "district", length = 15, nullable = false)
     private String district;
     
+	@NotBlank(message = "Ingrese la dirección del local")
 	@Column(name = "address", length = 30, nullable = false)
     private String address;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
+	@NotNull(message = "Por favor, ingrese la compañia a la que pertenece el local")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "company_id")
 	private Company company;
 
+	@NotEmpty(message = "Ingrese los anuncios que pertenecen al local")
 	@OneToMany(mappedBy="branchOffice", fetch = FetchType.LAZY)
     private List<Announcement> announcements;
 
+	@NotEmpty(message = "Ingrese los usuarios que pertenecen al local")
 	@OneToMany(mappedBy = "branchOffice", fetch = FetchType.LAZY)
 	private List<UserBranchoffice> userBranchOffices;
 	
