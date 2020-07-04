@@ -7,7 +7,7 @@
 	<main role="main">
 		<section class="container">
 			<div class="card text-center">
-				<div class="card-header">New Company</div>
+				<div class="card-header">Edit your Company</div>
 				<div class="card-body text-left">
 
 					<form th:action="@{/karwas/userbranchoffice/savecompany}"
@@ -42,7 +42,6 @@
 								<label for="workShift">Work Shift</label> <select
 									th:field="*{workShift}" class="form-control"
 									th:errorclass="'form-control alert-danger'">
-									<option value="">Select Work Shift</option>
 									<option value="M-S">Monday to Sunday</option>
 									<option value="M-S-T">Monday to Saturday</option>
 									<option value="M-W-F">Monday - Wendsday - Friday</option>

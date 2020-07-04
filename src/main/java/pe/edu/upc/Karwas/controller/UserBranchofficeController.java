@@ -1,5 +1,8 @@
 package pe.edu.upc.Karwas.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,30 +40,24 @@ public class UserBranchofficeController {
 	@Autowired
 	private UserService userService;
 
-	/*
-	@GetMapping("/mycompanys/{id}")
-	public String findCompanyUser(@PathVariable("id")Long id, Model model) {
+	private static User user;
+	
+	@ModelAttribute
+	public void getUsuario(Model model) {
+		model.addAttribute("user", user);
+	}
+	
+	@GetMapping("/mycompanys")
+	public String ListAll(Model model) {
 		try {
-			user = userService.findById(id).orElse(null);
-			model.addAttribute("user", user);
-			model.addAttribute("user_branch", user.getUserBranchoffices());
+			List<UserBranchoffice> user_branch = userBranchOfficeService.readAll();
+			model.addAttribute("user_branch", user_branch);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "/user_branchoffice/start";
 	}
-	*/
-	/*@GetMapping("/mycompanys")
-	public String findCompanyUser(Model model) {
-		try {
-			model.addAttribute("user", user);
-			model.addAttribute("user_branch", user.getUserBranchoffices());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "/user_branchoffice/start";
-	}*/
-
+	
 	@GetMapping("/newcompany")
 	public String newCompany(Model model) {
 		UserBranchoffice user_branch = new UserBranchoffice();
@@ -69,6 +66,12 @@ public class UserBranchofficeController {
 		user_branch.setBranchOffice(branchoffice);
 		user_branch.getBranchOffice().setCompany(company);
 		model.addAttribute("user_branch", user_branch);
+		try {
+			List<User> users = userService.readAll();
+			model.addAttribute("users", users);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "/user_branchoffice/new";
 	}
 	
@@ -82,7 +85,43 @@ public class UserBranchofficeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/karwas";
+		return "redirect:/karwas/userbranchoffice/mycompanys";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String editBranchOffice(@PathVariable("id") Integer id, Model model) {
+		try {
+			Optional<UserBranchoffice> optional = userBranchOfficeService.findById(id);
+			if (optional.isPresent()) {				
+				model.addAttribute("user_branch", optional.get());
+				List<User> users = userService.readAll();
+				model.addAttribute("users", users);
+				List<BranchOffice> branchoffices = branchOfficeService.readAll();
+				model.addAttribute("branchoffices", branchoffices);
+				List<Company> companys = companyService.readAll();
+				model.addAttribute("companys", companys);
+			} else {
+				return "redirect:/karwas/userbranchoffice/mycompanys";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/user_branchoffice/edit";
+	}
+
+	@GetMapping("/del/{id}")
+	public String delBranchOffice(@PathVariable("id") Integer id, Model model) {
+		try {
+			Optional<UserBranchoffice> optional = userBranchOfficeService.findById(id);
+			if (optional.isPresent()) {
+				userBranchOfficeService.deleteById(id);
+			} else {
+				return "redirect:/karwas/userbranchoffice/mycompanys";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/karwas/userbranchoffice/mycompanys";
 	}
 	
 }

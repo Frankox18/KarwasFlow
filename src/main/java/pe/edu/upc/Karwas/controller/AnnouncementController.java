@@ -30,7 +30,7 @@ public class AnnouncementController {
 	@Autowired
 	private BranchOfficeService branchOfficeService;
 	
-	@GetMapping("/start")
+	@GetMapping
 	public String listAll(Model model) {
 		try {
 			List<Announcement> announcements = announcementService.readAll();
@@ -64,7 +64,7 @@ public class AnnouncementController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/karwas/announcement/start";
+		return "redirect:/karwas/announcement";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -76,7 +76,7 @@ public class AnnouncementController {
 				List<BranchOffice> branchOffices = branchOfficeService.readAll();
 				model.addAttribute("branchOffices", branchOffices);
 			} else {
-				return "redirect:/karwas/announcement/start";
+				return "redirect:/karwas/announcement";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -91,11 +91,11 @@ public class AnnouncementController {
 			if (optional.isPresent()) {
 				announcementService.deleteById(id);
 			} else {
-				return "redirect:/karwas/announcement/start";
+				return "redirect:/karwas/announcement";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/karwas/announcement/start";
+		return "redirect:/karwas/announcement";
 	}	
 }

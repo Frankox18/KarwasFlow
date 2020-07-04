@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeLeaf.org">
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeLeaf.org">
 <head th:replace="layout/layout :: head">
 </head>
 <body>
@@ -9,26 +7,22 @@
 	<main role="main">
 		<section class="container">
 			<div class="card text-center">
-				<div class="card-header">Edit Car</div>
+				<div class="card-header">Edit your Car</div>
 				<div class="card-body text-left">
 
-					<form th:action="@{/karwas/car/save}"
-						th:object="${car}" method="post">
+					<form th:action="@{/karwas/car/save}" th:object="${car}"
+						method="post">
 						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label for="license">License</label> <input type="text"
 									class="form-control" th:field="*{license}"
 									placeholder="Ingrese su placa">
 							</div>
-						</div>
-						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="brand">Brand</label> <input
-									type="text" class="form-control" th:field="*{brand}"
+								<label for="brand">Brand</label> <input type="text"
+									class="form-control" th:field="*{brand}"
 									placeholder="Ingrese su marca">
 							</div>
-						</div>
-						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label for="model">Model</label> <input type="text"
 									class="form-control" th:field="*{model}"
@@ -39,21 +33,22 @@
 									class="form-control" th:field="*{color}"
 									placeholder="Ingrese el color">
 							</div>
-						</div>
-						<div class="form-group col-md-6">
-								<label for="user">User</label> <select
-									th:field="*{user}" class="form-control">
-									<option th:each="user : ${users}"
-										th:value="${user.id}"
-										th:text="${user.person.dni + '-'+  user.person.name}">
-									</option>
+							<div class="form-group col-md-6">
+								<label for="user">User</label> <select th:field="*{user}"
+									class="form-control">
+									<option th:each="user : ${users}" th:value="${user.id}"
+										th:text="${user.person.dni + '-'+  user.person.name}"></option>
 								</select>
 							</div>
-						<button type="submit" class="btn btn-success">
-							<i class="fas fa-save"></i> Grabar
-						</button>
-						<a th:href="@{/karwas/car/start}" class="btn btn-danger">
-							Cancelar</a>
+
+						</div>
+						<div class="text-center">
+							<br>
+							<button type="submit" class="btn btn-dark">
+								<i class="fas fa-save"></i> Grabar
+							</button>
+							<a th:href="@{/karwas}" class="btn btn-danger"> Cancelar</a>
+						</div>
 					</form>
 				</div>
 				<div class="card-footer text-center"></div>

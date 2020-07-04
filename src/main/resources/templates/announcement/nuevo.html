@@ -14,29 +14,17 @@
 						th:object="${announcement}" method="post">
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="title">Title</label>
-								<input type="text" class="form-control" th:field="*{title}"
+								<label for="title">Title</label> <input type="text"
+									class="form-control" th:field="*{title}"
 									placeholder="Ingrese un titulo">
 							</div>
-						</div>
-
-						<div class="form-row">
 							<div class="form-group col-md-6">
 								<label for="description">Description</label>
 								<textarea class="form-control" th:field="*{description}"
 									placeholder="Ingrese una descripcion"></textarea>
 							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-md-6">
-
-								<label for="announcementDate">Announcement Date</label> <input
-									type="date" class="form-control" th:field="*{announcementDate}"
-									placeholder="Ingrese la fecha de reserva">
-
-							</div>
-						</div>
-						<div class="form-row">
+							
+							
 							<div class="form-group col-md-6">
 								<label for="branchOffice">Branch Office</label> <select
 									th:field="*{branchOffice}" class="form-control">
@@ -47,12 +35,20 @@
 									</option>
 								</select>
 							</div>
+							<div class="form-group col-md-6">
+								<label for="announcementDate">Announcement Date</label> <input
+									type="date" class="form-control" th:field="*{announcementDate}"
+									placeholder="Ingrese la fecha de reserva">
+							</div>
 						</div>
-						<button type="submit" class="btn btn-success">
-							<i class="fas fa-save"></i> Grabar
-						</button>
-						<a th:href="@{/karwas/announcement/start}" class="btn btn-danger">
-							Cancelar</a>
+						<div class="text-center">
+						<br>
+							<button type="submit" class="btn btn-dark">
+								<i class="fas fa-save"></i> Grabar
+							</button>
+							<a th:href="@{/karwas/announcement}" class="btn btn-danger">
+								Cancelar</a>
+						</div>
 					</form>
 				</div>
 				<div class="card-footer text-center"></div>

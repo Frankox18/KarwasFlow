@@ -4,6 +4,7 @@ package pe.edu.upc.Karwas.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +29,7 @@ public class Washed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "type_washed_id")
 	private TypeWashed typewashed;
 
@@ -41,7 +42,7 @@ public class Washed {
 	@Column(name="total_amount", length = 40, nullable = false)
 	private int totalAmount;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "announcement_id")
 	private Announcement announcement;
 	

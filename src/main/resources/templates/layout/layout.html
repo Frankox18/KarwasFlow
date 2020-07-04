@@ -32,18 +32,23 @@
 					<li class="nav-item"><a class="nav-link" th:href="@{/karwas}">Home</a>
 					</li>
 					<li sec:authorize="hasRole('ROLE_DRIVER')" class="nav-item"><a
-						class="nav-link" th:href="@{/karwas/car/start}">Register Car</a></li>
+						class="nav-link" th:href="@{/karwas/car/mycars}">Register Car</a></li>
 					<li sec:authorize="hasRole('ROLE_MANAGER')" class="nav-item"><a
-						class="nav-link" th:href="@{/karwas/userbranchoffice/newcompany}">Register
+						class="nav-link" th:href="@{/karwas/userbranchoffice/mycompanys}">Register
 							Company</a></li>
 					<li sec:authorize="hasRole('ROLE_DRIVER')" class="nav-item"><a
 						class="nav-link" th:href="@{/karwas/washed/start}">See Washes</a></li>
+					<li sec:authorize="hasRole('ROLE_MANAGER')" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/announcement}">Create
+							Announcement</a></li>
+					<li sec:authorize="hasRole('ROLE_MANAGER')" class="nav-item"><a
+						class="nav-link" th:href="@{/karwas/washed/start}">Create
+							Washes</a></li>
+					<li sec:authorize="hasRole('ROLE_DRIVER')" class="nav-item"><a
+						class="nav-link" th:href="@{#}">My regiters</a></li>
 					<li sec:authorize="isAuthenticated()" class="nav-item"><a
 						class="nav-link" th:href="@{/karwas/payment/new}">Payment</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a
-						class="nav-link" th:href="@{/karwas/typewashed/new}">TypeWashed</a></li>
-					<li sec:authorize="isAuthenticated()" class="nav-item"><a
-						class="nav-link" th:href="@{/karwas/washed/new}">Washed</a></li>
+
 				</ul>
 			</div>
 			<span class="navbar-text">

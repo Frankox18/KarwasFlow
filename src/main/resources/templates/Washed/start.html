@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<html lang="es" xmlns:th="http://www.thymeLeaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="layout/layout :: head">
 </head>
 <body>
@@ -14,7 +15,6 @@
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Type Washed</th>
-								<th scope="col">Announcement</th>
 								<th scope="col">Description</th>
 								<th scope="col">Wash Time</th>
 								<th scope="col">Total Amount</th>
@@ -22,15 +22,13 @@
 						      
 							</tr>
 						</thead>
-						<tbody th:each="washed: ${washes}">
+						<tbody th:each="washed: ${washeds}">
 							<tr>
 								<th scope="row" th:text="${washed.id}">1</th>
 								<td th:text = "${washed.typewashed.serviceName}">.</td>
-								<td th:text = "${washed.announcement.title}">.</td>
 								<td th:text = "${washed.description}">.</td>
 								<td th:text = "${washed.wash_Time}">.</td>
 								<td th:text = "${washed.totalAmount }">.</td>
-
 							    <td>
 							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
 							      <a th:href="@{'/karwas/washed/edit/' + ${washed.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
@@ -41,7 +39,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="card-footer text-center">
+				<div sec:authorize="hasRole('ROLE_MANAGER')" class="card-footer text-center">
 				<a th:href="@{/karwas/washed/new}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> New Washed</a>
 				</div>
 			</div>

@@ -48,23 +48,15 @@ public class WashedController {
 	@GetMapping("/new")
 	public String newService(Model model) {
 		Washed washed = new Washed();
+		TypeWashed typeWashed = new TypeWashed();
+		washed.setTypewashed(typeWashed);
 		model.addAttribute("washed", washed);
-		
 		try {
 			List<Announcement> announcements = announcementService.readAll();
 			model.addAttribute("announcements", announcements);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			List<TypeWashed> typewasheds = typewashedService.readAll();
-			model.addAttribute("typewasheds", typewasheds);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		return "/washed/nuevo";
 	}
 	
@@ -72,6 +64,7 @@ public class WashedController {
 	public String saveService(@ModelAttribute("washed") Washed washed, Model model, SessionStatus status) {
 		try {
 			washedService.create(washed);
+			typewashedService.create(washed.getTypewashed());
 			status.setComplete();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,19 +86,6 @@ public class WashedController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
-			Optional<Washed> optional = washedService.findById(id);
-			if(optional.isPresent()) {
-				model.addAttribute("washed", optional.get());	
-				List<TypeWashed> typewasheds = typewashedService.readAll();
-				model.addAttribute("typewasheds", typewasheds);				
-			} else {
-				return "redirect:/karwas/washed/start";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		return "/washed/edit";
 	}
 	

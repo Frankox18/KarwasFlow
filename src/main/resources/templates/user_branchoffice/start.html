@@ -24,14 +24,14 @@
 						<tbody th:each="userbranch: ${user_branch}">
 							<tr>
 								<th scope="row" th:text="${userbranch.id}">1</th>
-								<td th:text = "${userbranch.branchoffice.company.name}">.</td>
-								<td th:text = "${userbranch.branchoffice.company.ruc}">.</td>
-							    <td th:text = "${userbranch.branchoffice.district}">.</td>
-								<td th:text = "${userbranch.branchoffice.address}">.</td>
+								<td th:text = "${userbranch.branchOffice.company.name}">.</td>
+								<td th:text = "${userbranch.branchOffice.company.ruc}">.</td>
+							    <td th:text = "${userbranch.branchOffice.district}">.</td>
+								<td th:text = "${userbranch.branchOffice.address}">.</td>
 							    <td>
 							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
-							      <a th:href="@{#}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
-							      <a th:href="@{#}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+							      <a th:href="@{'/karwas/userbranchoffice/edit/' + ${userbranch.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+							      <a th:href="@{'/karwas/userbranchoffice/del/' + ${userbranch.id}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
 							    </td>
 							</tr> 
 							
