@@ -43,8 +43,8 @@ public class Washed {
 	@Column(name="description", length = 40, nullable = false)
 	private String description;
 	
-	@Min(0)
-	@Max(24)
+	@Min(value = 0, message = "El valor minimo de tiempo es 0")
+	@Max(value = 0, message = "El valor maximo de tiempo es 24")
 	@Column(name="wash_time", length = 10, nullable = false)
 	private int wash_Time;
 	
@@ -56,7 +56,6 @@ public class Washed {
 	@JoinColumn(name = "announcement_id")
 	private Announcement announcement;
 	
-	@NotEmpty(message = "Ingrese el detalle de lavado")
 	@OneToMany(mappedBy = "washed")
 	private List<Registry> washedsDetails;
 	

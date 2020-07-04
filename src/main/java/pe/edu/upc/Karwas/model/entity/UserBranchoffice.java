@@ -28,9 +28,8 @@ public class UserBranchoffice {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-
 	@NotNull(message = "Ingrese user")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user; 
 	
@@ -43,13 +42,13 @@ public class UserBranchoffice {
 	@Column(name = "work_shift", length = 40, nullable = false)
 	private String workShift;
 	
-	@Min(0)
-	@Max(24)
+	@Min(value = 0, message = "El valor minimo de tiempo es 0")
+	@Max(value = 24, message = "El valor maximo de tiempo es 0")
 	@Column(name = "start_hour",length = 2,nullable = false)
 	private int startHour;
 	
-	@Min(0)
-	@Max(24)
+	@Min(value = 0, message = "El valor minimo de tiempo es 0")
+	@Max(value = 24, message = "El valor maximo de tiempo es 0")
 	@Column(name = "end_hour", length = 2 ,nullable = false)
 	private int endHour;
 }

@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -44,11 +43,9 @@ public class BranchOffice {
 	@JoinColumn(name = "company_id")
 	private Company company;
 
-	@NotEmpty(message = "Ingrese los anuncios que pertenecen al local")
 	@OneToMany(mappedBy="branchOffice", fetch = FetchType.LAZY)
     private List<Announcement> announcements;
 
-	@NotEmpty(message = "Ingrese los usuarios que pertenecen al local")
 	@OneToMany(mappedBy = "branchOffice", fetch = FetchType.LAZY)
 	private List<UserBranchoffice> userBranchOffices;
 	

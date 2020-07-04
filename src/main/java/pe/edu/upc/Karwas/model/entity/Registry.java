@@ -37,13 +37,13 @@ public class Registry {
 	@JoinColumn(name = "car_id")
 	private Car car;
 	
-	@Min(0)
-	@Max(24)
+	@Min(value = 0, message = "El tiempo minimo es 0")
+	@Max(value = 24, message = "El tiempo maximo es 24")
 	@Column(name = "start_time_wash", length = 2, nullable = false)
 	private int startTimeWash;
 	
-	@Min(0)
-	@Max(24)
+	@Min(value = 0, message = "El tiempo minimo es 0")
+	@Max(value = 24, message = "El tiempo maximo es 24")
 	@Column(name = "end_time_wash", length = 2, nullable = false)
 	private int endTimeWash;
 	

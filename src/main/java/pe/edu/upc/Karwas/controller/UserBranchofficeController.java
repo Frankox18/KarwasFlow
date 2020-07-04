@@ -39,13 +39,6 @@ public class UserBranchofficeController {
 	
 	@Autowired
 	private UserService userService;
-
-	private static User user;
-	
-	@ModelAttribute
-	public void getUsuario(Model model) {
-		model.addAttribute("user", user);
-	}
 	
 	@GetMapping("/mycompanys")
 	public String ListAll(Model model) {
@@ -96,10 +89,6 @@ public class UserBranchofficeController {
 				model.addAttribute("user_branch", optional.get());
 				List<User> users = userService.readAll();
 				model.addAttribute("users", users);
-				List<BranchOffice> branchoffices = branchOfficeService.readAll();
-				model.addAttribute("branchoffices", branchoffices);
-				List<Company> companys = companyService.readAll();
-				model.addAttribute("companys", companys);
 			} else {
 				return "redirect:/karwas/userbranchoffice/mycompanys";
 			}

@@ -3,7 +3,6 @@ package pe.edu.upc.Karwas.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -31,7 +29,7 @@ public class Car {
 	private Integer id;
 	
 	@NotBlank(message = "Ingrese la placa del auto")
-	@Column(name = "license", length = 6, nullable = false)
+	@Column(name = "license", length = 7, nullable = false)
 	private String license;
 	
 	@NotBlank(message = "Ingrese la marca del auto")
@@ -47,11 +45,10 @@ public class Car {
 	private String color;
 	
 	@NotNull(message = "Ingrese al usuario")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@NotEmpty(message = "Ingrese los detalles del lavado")
 	@OneToMany(mappedBy = "car")
 	private List<Registry> washedsDetails;
 	

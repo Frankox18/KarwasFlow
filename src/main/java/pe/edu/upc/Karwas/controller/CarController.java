@@ -30,7 +30,7 @@ public class CarController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/start")
+	@GetMapping("/mycars")
 	public String listAll(Model model) {
 		try {
 			List<Car> cars = carService.readAll();
@@ -40,7 +40,7 @@ public class CarController {
 		return "/car/start";
 	}
 
-	@GetMapping("/new")
+	@GetMapping("/newcar")
 	public String newCar(Model model) {
 		Car car = new Car();
 		model.addAttribute("car",car);
@@ -53,7 +53,7 @@ public class CarController {
 		return "/car/login";
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/savecar")
 	public String saveCar(@ModelAttribute("car") Car car, Model model, SessionStatus status) {
 		try {
 			carService.create(car);
@@ -61,7 +61,7 @@ public class CarController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/karwas/car/start";
+		return "redirect:/karwas/car/mycars";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -73,7 +73,7 @@ public class CarController {
 				List<User> users = userService.readAll();
 				model.addAttribute("users", users);
 			} else {
-				return "redirect:/karwas/car/start";
+				return "redirect:/karwas/car/mycars";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,12 +88,12 @@ public class CarController {
 			if (optional.isPresent()) {
 				carService.deleteById(id);
 			} else {
-				return "redirect:/karwas/car/start";
+				return "redirect:/karwas/car/mycars";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/karwas/car/start";
+		return "redirect:/karwas/car/mycars";
 	}	
 	
 }
