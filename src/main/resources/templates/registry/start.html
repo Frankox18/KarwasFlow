@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center">
+				<div class="card-header">My Registers</div>
+				<div class="card-body">
+					<table class="table table-borderless table-dark">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Type of Washed</th>
+								<th scope="col">Total Amounth</th>
+								<th scope="col">License</th>
+								<th scope="col">Start Time</th>
+								<th scope="col">End Time</th>
+								<th scope="col">Method</th>
+								<th scope="col"></th>
+
+							</tr>
+						</thead>
+						<tbody th:each="registry: ${registers}">
+							<tr>
+								<th scope="row" th:text="${registry.id}">1</th>
+								<td th:text="${registry.washed.typewashed.serviceName}">.</td>
+								<td th:text="${registry.washed.totalAmount}">.</td>
+								<td th:text="${registry.car.license}">.</td>
+								<td th:text="${registry.startTimeWash}">.</td>
+								<td th:text="${registry.endTimeWash}">.</td>
+								<td th:text="${registry.payment.method}">.</td>
+								<td><a href="" class="btn btn-info"> <i
+										class="fas fa-info"></i>
+								</a> <a th:href="@{'/karwas/registry/edit/' + ${registry.id}}"
+									class="btn btn-warning"> <i class="fas fa-edit"></i>
+								</a> <a th:href="@{'/karwas/registry/del/' + ${registry.id}}"
+									class="btn btn-danger"> <i class="fas fa-trash"></i>
+								</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+				<div class="card-footer text-center">
+					<a th:href="@{/karwas/registry/newregister}"
+						class="btn btn-primary"><i class="fas fa-plus-circle"></i> New
+						Register</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

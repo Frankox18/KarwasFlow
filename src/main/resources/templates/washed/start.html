@@ -27,12 +27,12 @@
 								<th scope="row" th:text="${washed.id}">1</th>
 								<td th:text = "${washed.typewashed.serviceName}">.</td>
 								<td th:text = "${washed.description}">.</td>
-								<td th:text = "${washed.wash_Time}">.</td>
+								<td th:text = "${washed.washTime}">.</td>
 								<td th:text = "${washed.totalAmount }">.</td>
 							    <td>
 							      <a href="" class="btn btn-info"> <i class="fas fa-info"></i> </a>
-							      <a th:href="@{'/karwas/washed/edit/' + ${washed.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
-							      <a th:href="@{'/karwas/washed/del/' + ${washed.id}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+							      <a sec:authorize="hasRole('ROLE_MANAGER')" th:href="@{'/karwas/washed/edit/' + ${washed.id}}" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+							      <a sec:authorize="hasRole('ROLE_MANAGER')" th:href="@{'/karwas/washed/del/' + ${washed.id}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
 							    </td>
 							</tr> 
 							

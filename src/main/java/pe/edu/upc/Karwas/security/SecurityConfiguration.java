@@ -34,9 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/karwas/index.html").permitAll()
+				.antMatchers("/karwas/userbranchoffice/mycompanys").hasRole("MANAGER")
+				.antMatchers("/karwas/car/mycars").hasRole("DRIVER")
 				.antMatchers("/karwas/announcement").hasRole("MANAGER")
-				.antMatchers("/karwas/role/start").hasAuthority("ACCESS_ADDPERSON")
-				.antMatchers("/karwas/payment").authenticated()
+				.antMatchers("/karwas/registry/new").hasRole("DRIVER")
 			.and()
 			.formLogin()
 				.loginProcessingUrl("/signin")

@@ -49,6 +49,7 @@ public class UserBranchOfficeServiceImpl implements UserBranchOfficeService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteByAll() throws Exception {
 		userBranchOfficeRepository.deleteAll();
 	}

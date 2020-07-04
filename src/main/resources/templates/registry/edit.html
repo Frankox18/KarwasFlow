@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeLeaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<main role="main">
+		<section class="container">
+			<div class="card text-center">
+				<div class="card-header">Edit your Register</div>
+				<div class="card-body text-left">
+
+					<form th:action="@{/karwas/registry/saveregister}"
+						th:object="${registry}" method="post">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="car">Car</label> <select th:field="*{car}"
+									class="form-control">
+									<option th:each="car : ${cars}" th:value="${car.id}"
+										th:text="${car.license + '-'+  car.user.username}"></option>
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="washed">Washed</label> <select th:field="*{washed}"
+									class="form-control">
+									<option th:each="washed : ${washeds}" th:value="${washed.id}"
+										th:text="${washed.typewashed.serviceName + '-'+  washed.totalAmount}"></option>
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="startTimeWash">Start Time</label> <input
+									type="number" class="form-control" th:field="*{startTimeWash}"
+									placeholder="Ingrese su tiempo inicial">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="endTimeWash">End Time</label> <input type="number"
+									class="form-control" th:field="*{endTimeWash}"
+									placeholder="Ingrese su tiempo final">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<div class="input-group-prepend">
+									<input type="radio" name="payment" value="visa"
+										th:field="*{payment.method}"> <img alt="visa"
+										th:src="@{/images/visa.png}" class="mb-1" width="60"
+										height="45"> <input type="radio" name="payment"
+										value="mastercard" th:field="*{payment.method}"> <img
+										alt="mastercard" th:src="@{/images/mastercard.png}"
+										class="mb-1" width="60" height="45">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="numberCard">Number card</label> <input type="text"
+									class="form-control" th:field="*{payment.numberCard}"
+									placeholder="Ingrese una tarjeta" id="choose" name="i_like"
+									required minlength="16" maxlength="16" pattern="[0-9]{16}"
+									title="Ingresar 16 digitos n&uacute;mericos de tarjeta">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="cvv">CVV</label> <input type="text"
+									class="form-control" th:field="*{payment.cvv}"
+									placeholder="Ingrese el codigo cvv" id="choose1" name="i_like"
+									required minlength="3" maxlength="3" pattern="[0-9]{3}"
+									title="Ingresar 3 digitos n&uacute;mericos de cvv">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="dateExp">Date Exp</label> <input type="date"
+									class="form-control" th:field="*{payment.dateExp}"
+									placeholder="Ingrese la fecha de expiracion">
+							</div>
+						</div>
+						<div class="text-center">
+							<br>
+							<button type="submit" class="btn btn-dark">
+								<i class="fas fa-save"></i> Grabar
+							</button>
+							<a th:href="@{/karwas/registry/myregister}"
+								class="btn btn-danger"> Cancelar</a>
+						</div>
+				</form>
+			</div>
+			<div class="card-footer text-center"></div>
+			</div>
+
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

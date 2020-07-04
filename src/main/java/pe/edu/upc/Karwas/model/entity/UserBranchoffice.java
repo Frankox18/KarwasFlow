@@ -43,12 +43,12 @@ public class UserBranchoffice {
 	private String workShift;
 	
 	@Min(value = 0, message = "El valor minimo de tiempo es 0")
-	@Max(value = 24, message = "El valor maximo de tiempo es 0")
+	@Max(value = 24, message = "El valor maximo de tiempo es 24")
 	@Column(name = "start_hour",length = 2,nullable = false)
 	private int startHour;
 	
 	@Min(value = 0, message = "El valor minimo de tiempo es 0")
-	@Max(value = 24, message = "El valor maximo de tiempo es 0")
+	@Max(value = 24, message = "El valor maximo de tiempo es 24")
 	@Column(name = "end_hour", length = 2 ,nullable = false)
 	private int endHour;
 }

@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -34,7 +33,7 @@ public class Washed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message = "Ingrese el tipo de lavado")
+	@NotNull(message = "Ingrese el tipo de lavado")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "type_washed_id")
 	private TypeWashed typewashed;
@@ -44,9 +43,9 @@ public class Washed {
 	private String description;
 	
 	@Min(value = 0, message = "El valor minimo de tiempo es 0")
-	@Max(value = 0, message = "El valor maximo de tiempo es 24")
+	@Max(value = 24, message = "El valor maximo de tiempo es 24")
 	@Column(name="wash_time", length = 10, nullable = false)
-	private int wash_Time;
+	private int washTime;
 	
 	@Column(name="total_amount", length = 40, nullable = false)
 	private int totalAmount;
